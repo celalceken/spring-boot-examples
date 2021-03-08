@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+<head>
+    <title>Insecure Web Application</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css">
+</head>
+<body >
+
+<div class="well" style="background-color:#563D7C; color: #FFFFFF; margin-left: 0px; border-left-width: 2px;
+        border-left-color: #191906; border-right-width: 2px; border-right-color: #191906">
+
+    <h2 style="text-align: left">Insecure Web Application</h2>
+    <p class="lead"></p>
+</div>
+
+<div class="container" id="container">
+
+    <div class="row" >
+        <div class="col-md-6">
+            <div class="panel panel-default" >
+                <div class="panel-heading" ><h3><strong>Examples</strong></h3>
+                </div>
+                <div class="panel-body" align="justify">
+                    <ul>
+                        <li><a href="/kullanicilar">Synchronous Communication</a></li>
+                        <li><a id="asenkron">Asynchronous Communication (AJAX) - Get all users</a></li>
+                        <li>
+                            Asynchronous Communication (AJAX)
+                            <input  id="kisiNo" value="input id"  >
+                            <button type="button" class="btn btn-success" id="ara">Search</button>
+                        </li>
+                        <li><a id="asenkronJSON">Asynchronous Communication with JSON - Get all user</a></li>
+                        <li>Asynchronous Communication with JSON
+                            <input  id="adi" value="input name"  >
+                            <button type="button" class="btn btn-success" id="araAd">Search</button>
+                        </li>
+                        <li>Asynchronous Communication with JSON
+                            <input  id="adiKeyUp" value="input name"  >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel panel-default" >
+                <div class="panel-heading" ><h3><strong>Response</strong></h3>
+                </div>
+                <div class="panel-body" align="justify" id="response" >
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- /container -->
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<script   type="text/javascript">
+    $(document).ready(function()
+    {
+        $("#asenkron").click(function()
+        {
+            $.ajax({
+                url: '/kullanicilar',
+                type: 'GET',
+                success: function(msg)
+                {
+                    $("#response").html(msg).fadeIn("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+            });
+            return false;
+        });
+
+        $("#ara").click(function()
+        {
+            var form_data =
+                {
+                    adi: $('#kisiNo').val()
+                };
+            var url= "/kullanicilar/"+$('#kisiNo').val();
+            //alert(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+
+                success: function(msg)
+                {
+                    $("#response").html(msg).fadeIn("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+            });
+            return false;
+        });
+        $("#asenkronJSON").click(function()
+        {
+            var url= "/kullanicilarJSON";
+            //alert(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+
+                success: function(msg)
+                {
+                    $("#response").html(JSON.stringify(msg)).fadeIn("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+            });
+            return false;
+        });
+        $("#araAd").click(function()
+        {
+            var url= "/kullanicilarJSONad/"+$('#adi').val();
+            //alert(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+
+                success: function(msg)
+                {
+                    $("#response").html(msg.surname+"<br>"+JSON.stringify(msg)).fadeIn("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+            });
+            return false;
+        });
+
+        $("#adiKeyUp").keyup(function(e)
+        {
+            if(e.which==16) // ignore shift key
+                return;
+            var url= "/kullanicilarJSONadkeyup/"+$('#adiKeyUp').val();
+            //alert(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'json',
+
+                success: function(msg)
+                {
+                    $("#response").html(JSON.stringify(msg)).fadeIn("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+            });
+            return false;
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

@@ -5,9 +5,9 @@
     * http://localhost:8005/login
     * http://localhost:8005/dashboard    
     * http://localhost:8005/logout
+    * http://localhost:8005/dashboard
   
 * Session management
-
      Memory 
      File system persistence 
      JDBC persistence 

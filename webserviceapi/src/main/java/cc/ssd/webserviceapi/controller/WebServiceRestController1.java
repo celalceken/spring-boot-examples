@@ -14,6 +14,7 @@ import javax.json.Json;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Optional;
 
+//@CrossOrigin(origins = "http://localhost:8001", maxAge = 3600)
 @RestController
 @RequestMapping("/api")
 public class WebServiceRestController1 {

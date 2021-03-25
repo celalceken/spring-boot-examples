@@ -24,14 +24,15 @@ Content-Type: application/json
 ### Send DELETE request with json body
 DELETE http://localhost:8005/api/users
 
-Content-Type: application/json
+Content-Type: application/json 
 
-{ "id": 7,
-"username": "uname",
-"password": "password",
-"name": "xk",
-"surname": "z",
-"email": "content"
+{ 
+"id": 7,
+"username": "user1",
+"password": "12345678",
+"name": "X",
+"surname": "Y",
+"email": "e@posta"
 }
 -------
 

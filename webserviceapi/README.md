@@ -4,10 +4,12 @@ Accept: application/json
 
 ### Send GET request
 GET http://localhost:8005/api/users
+
 Accept: application/json
 
 ### Send POST request with json body
 POST http://localhost:8005/api/users
+
 Content-Type: application/json
 
 {
@@ -21,6 +23,7 @@ Content-Type: application/json
 
 ### Send DELETE request with json body
 DELETE http://localhost:8005/api/users
+
 Content-Type: application/json
 
 { "id": 7,
@@ -33,4 +36,5 @@ Content-Type: application/json
 -------
 
 curl --request GET http://localhost:8005/api/users
+
 curl --request GET http://localhost:8005/

@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<head>
+    <title>Insecure Web Application</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css">
+    <link rel="stylesheet" href="css/Bicim.css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+</head>
+<body >
+
+
+<div class="well" style="background-color:#563D7C; color: #FFFFFF; margin-left: 0px; border-left-width: 2px;
+        border-left-color: #191906; border-right-width: 2px; border-right-color: #191906">
+
+    <h2 style="text-align: left">Insecure Web Application</h2>
+    <p class="lead"></p>
+</div>
+
+<div class="container" id="container">
+    <h2>SQLi</h2>
+    <h4 >Form based Authentication <a id="lecture2">Dashboard</a> </h4>
+    <h4 >Form based Authentication<a id="login">LoginForm</a></h4>
+    <h4 >Form based Authentication<a id="logout">Logout</a></h4>
+
+    <h2>XSS</h2>
+    <a id="loginxss">LoginForm</a>
+</div> <!-- /container -->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+
+<script   type="text/javascript">
+    $(document).ready(function()
+    {   // Synchronous Communication
+        $("#lecture1").click(function()
+        {
+            window.location = '/examples';
+            return false;
+        });
+
+        // Asynchronous Communication
+        $("#lecture2").click(function()
+        {
+            $.ajax({
+                url: '/dashboard',
+                type: 'GET',
+                //data: form_data,
+                success: function(msg)
+                {
+                    // $("#listele").slideDown("500");
+                    //$("#container").html(msg).fadeIn("slow");//.fadeOut("slow");
+                    window.location = '/dashboard';
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+
+            });
+
+        });
+        // Asynchronous Communication
+        $("#login").click(function()
+        {
+            $.ajax({
+                url: '/loginpage',
+                type: 'GET',
+                //data: form_data,
+                success: function(msg)
+                {
+                    // $("#listele").slideDown("500");
+                    $("#container").html(msg).fadeIn("slow");//.fadeOut("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+
+            });
+        });
+
+        $("#loginxss").click(function()
+        {
+            $.ajax({
+                url: '/xssform',
+                type: 'GET',
+                //data: form_data,
+                success: function(msg)
+                {
+                    // $("#listele").slideDown("500");
+                    $("#container").html(msg).fadeIn("slow");//.fadeOut("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+
+            });
+        });
+        $("#logout").click(function()
+        {
+            $.ajax({
+                url: '/logout',
+                type: 'GET',
+                //data: form_data,
+                success: function(msg)
+                {
+                   alert("you logged out")
+                    //$("#container").html(msg).fadeIn("slow");//.fadeOut("slow");
+                },
+                error: function()
+                {
+                    alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                }
+
+            });
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

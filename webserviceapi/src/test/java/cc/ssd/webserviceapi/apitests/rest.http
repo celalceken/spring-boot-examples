@@ -1,0 +1,22 @@
+POST http://localhost:8005/api/users
+Content-Type: application/json
+
+{ "username": "user5", "password": "passwordd", "name": "User1", "surname": "zz", "email": "u@one" }
+
+<> 2021-03-26T151105.500.json
+<> 2021-03-26T151050.400.html
+<> 2021-03-26T151017.400.html
+<> 2021-03-26T142135.500.json
+<> 2021-03-26T142120.500.json
+<> 2021-03-25T144139.200.txt
+
+
+###
+GET http://localhost:8005/api/users
+Accept: application/json
+
+<<> 2021-03-25T144017.200.json
+> 2021-03-25T143952.404.json
+
+<> 2021-03-26T142136.200.json
+<> 2021-03-25T144029.200.json

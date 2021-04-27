@@ -34,6 +34,8 @@ Content-Type: application/json
 "surname": "Y",
 "email": "e@posta"
 }
+
+
 -------
 
 curl --request GET http://localhost:8005/api/users

@@ -1,0 +1,46 @@
+### Send GET request
+GET http://localhost:8005/api/users/2
+Accept: application/json
+
+
+### Send GET request
+GET http://localhost:8005/api/users
+Accept: application/json
+
+
+### Send POST request with json body
+POST http://localhost:8005/api/users
+Content-Type: application/json
+
+{
+  "username": "user4",
+  "password": "1238",
+  "name": "Ayşe",
+  "surname": "Güneş",
+  "email": "con@tentd"
+}
+
+### Send POST request with json body
+DELETE http://localhost:8005/api/users
+Content-Type: application/json
+
+{ "id": 33,
+  "username": "uname",
+  "password": "password",
+  "name": "xk",
+  "surname": "z",
+  "email": "content"
+}
+
+### Send POST request with json body
+POST http://localhost:8005/userssqli
+Content-Type: application/json
+
+{
+  "id": "3",
+  "username": "admin1' or '1'--",
+  "password": "1238",
+  "name": "Selim",
+  "surname": "Güneş",
+  "email": "con@tentd"
+}

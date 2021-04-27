@@ -1,0 +1,15 @@
+GET http://localhost:8005/api/greeting
+Accept: application/json
+
+###
+
+GET http://localhost:8005/api/dashboard
+Authorization: Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbjEiLCJpYXQiOjE2MTk1MjMyODIsImV4cCI6MTYxOTUyMzg4Miwicm9sZXMiOlsiQWRtaW5pc3RyYXRvciJdLCJuYW1lIjoiw5ZtZXIiLCJzdXJuYW1lIjoiRmFydWsifQ.IDB1qa0XMl7-ZengNDbE9kbwOXGo5izzmHBzVLjj_kY31cnsR1AShWfVYs2H-qqvetDIRXFSJGo7zLBJ_OIdfg
+Accept: application/json
+
+<> 2021-04-27T142859.200.json
+<> 2021-04-27T142534.403.json
+<> 2021-04-27T142240.200.json
+<> 2021-04-27T142055.403.json
+<> 2021-04-27T142028.403.json
+###

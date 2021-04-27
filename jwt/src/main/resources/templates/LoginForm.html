@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <title>Insecure Web Application</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/examples/sticky-footer-navbar/sticky-footer-navbar.css">
+    <link rel="stylesheet" href="css/Bicim.css">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+
+
+</head>
+<body >
+
+<div class="well" style="background-color:#563D7C; color: #FFFFFF; margin-left: 0px; border-left-width: 2px;
+        border-left-color: #191906; border-right-width: 2px; border-right-color: #191906">
+
+    <h2 style="text-align: left">Insecure Web Application</h2>
+    <p class="lead"></p>
+</div>
+<div class="container" id="container">
+        <div class="row">
+            <div class="span12">
+                <form class="form-horizontal" >
+                    <fieldset>
+                        <div id="legend">
+                            <legend class="">Login</legend>
+                        </div>
+                        <div class="control-group">
+                            <!-- Username -->
+                            <label class="control-label"  for="username">Username</label>
+                            <div class="controls">
+                                <input type="text" id="username" name="username" placeholder="" class="input-xlarge">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Password-->
+                            <label class="control-label" for="password">Password</label>
+                            <div class="controls">
+                                <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <!-- Button -->
+                            <div class="controls">
+                                <button class="btn btn-success" id="submit">Login</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<script   type="text/javascript">
+    $(document).ready(function()
+    {
+        $('#mesaj').hide();
+        $("#personelNo").focus(function()
+        {
+            $('#mesaj').hide();
+
+        });
+        $("#submit").click(function()
+        {
+            var username = $('#username').val();
+            var passeord = $('#password').val();
+
+            //var form_data=$('form :input').serialize();
+            var form_data= {
+                "username": $("#username").val(),
+                "password": $("#password").val(),
+            };
+            alert(JSON.stringify(form_data));
+
+            $.ajax(
+                {
+                    url : "/api/login",
+                    type : 'POST',
+                    dataType : 'json',
+                    contentType: 'application/json',
+                    data:JSON.stringify(form_data),
+                    /*beforeSend: function (xhr) {
+                        xhr.setRequestHeader(header, token);
+                    },*/
+                    //data : form_data,
+                    success : function(data)
+                    {
+                        alert(JSON.stringify(data))
+
+                      /*  if (data['sonuc']=='1')
+                        {
+                            //window.location = '/dashboard';
+                            //alert ("Authenticated");
+                            //$("#container").html(msg).fadeIn("slow");//.fadeOut("slow");
+
+                        }
+                        else
+                        {
+                            alert("invalid credentials");
+                        }*/
+
+                    },
+                    error : function()
+                    {
+                        alert("Hata meydana geldi. Lütfen tekrar deneyiniz !!!");
+                    }
+                });
+
+            return false;
+        });
+
+    });
+</script>
+</body>
+</html>
